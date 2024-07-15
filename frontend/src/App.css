@@ -1,0 +1,17 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.App {
+  margin: auto;
+}
+
+.crossBtn {
+  margin-left: 20px;
+  font-size: 20px;
+  color: red;
+  cursor: pointer;
+}
