@@ -1,0 +1,156 @@
+body {
+  background-color: #2d2d2d;
+}
+
+.App {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #1d2327;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #5bafc2;
+  margin-bottom: 2rem;
+}
+
+.mailer-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 15px;
+}
+
+label {
+  flex: 1;
+  color: #333;
+  font-weight: bold;
+  text-align: left;
+  color: #fff;
+  margin-top: 1rem;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"],
+input[type="file"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: transparent;
+  transition: all 0.2s ease-in-out;
+}
+
+input:focus,
+textarea:focus {
+  border: 1px solid rgb(24, 230, 227);
+  outline: none;
+}
+
+textarea {
+  height: 100px;
+}
+
+.crossBtn {
+  margin-left: 20px;
+  font-size: 20px;
+  color: red;
+  cursor: pointer;
+}
+
+.ReactMultiEmail__input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.ReactMultiEmail__emails {
+  margin-top: 5px;
+}
+
+.send-button {
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.send-button:hover {
+  background-color: #0056b3;
+}
+
+a {
+  text-align: center;
+  display: block;
+  margin-top: 20px;
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.status-message {
+  text-align: center;
+  color: #555;
+  font-size: 17px;
+  color: yellow;
+  min-height: 20px;
+}
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 20px;
+  aspect-ratio: 1;
+  display: grid;
+  border: 1px solid #00000000;
+  border-radius: 50%;
+  border-right-color: #ffffff;
+  animation: spinner 1.5s infinite linear;
+}
+
+.loader::before,
+.loader::after {
+  content: "";
+  grid-area: 1/1;
+  margin: 2px;
+  border: inherit;
+  border-radius: 50%;
+  animation: spinner 3s infinite;
+}
+.loader::after {
+  margin: 4px;
+  animation-duration: 1s;
+}
+
+@keyframes spinner {
+  100% {
+    transform: rotate(1turn);
+  }
+}
