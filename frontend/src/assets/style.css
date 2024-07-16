@@ -183,12 +183,3 @@ a:hover {
     transform: rotate(1turn);
   }
 }
-
-/* Editor Styles */
-
-.jodit-react-container,
-.jodit-container {
-  /* background: #616060 !important;
-  background-color: #6f6e6e !important; */
-  color: black;
-}
