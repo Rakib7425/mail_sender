@@ -10,13 +10,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tinymce/tinymce-react": "^5.1.1",
     "axios": "^1.7.2",
+    "ckeditor4-react": "^5.1.0",
     "draft-js": "^0.11.7",
     "draft-js-export-html": "^1.4.1",
+    "jodit-react": "^4.1.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-multi-email": "^1.0.23",
-    "react-quill": "^2.0.0"
+    "react-quill": "^2.0.0",
+    "tinymce": "^7.2.1"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",

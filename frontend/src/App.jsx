@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import axios from "axios";
 import { ReactMultiEmail, isEmail } from "react-multi-email";
+import JoditEditor from "jodit-react";
 import "./assets/style.css";
 
 function App() {
@@ -13,6 +14,8 @@ function App() {
   const [status, setStatus] = useState("");
   const [isSendingMails, setIsSendingMails] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+
+  const editor = useRef(null);
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
@@ -33,13 +36,16 @@ function App() {
 
     try {
       if (emails.length < 1) {
-        return setStatus("No email provided!");
+        setStatus("No email provided!");
+        setIsSendingMails(false);
+        return;
       }
 
       setStatus("Sending emails...");
       const response = await axios.post(
-        // "http://localhost:3001/send-emails",
-        "https://mail-sender-7lhy.onrender.com/send-emails",
+        "http://localhost:3001/send-emails",
+        // "https://mail-sender-7lhy.onrender.com/send-emails",
+
         formData,
         {
           headers: {
@@ -62,7 +68,7 @@ function App() {
       <form onSubmit={handleSubmit} className="mailer-form">
         <div className="form-row">
           <label>
-            Sender Email: *
+            Sender Email:
             <input
               type="email"
               placeholder="Sender Email"
@@ -73,7 +79,7 @@ function App() {
             />
           </label>
           <label className="password-container">
-            Email Password: *
+            Email Password:
             <input
               autoComplete="off"
               type={showPassword ? "text" : "password"}
@@ -81,7 +87,6 @@ function App() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className="passwordInp"
             />
             <button
               type="button"
@@ -92,7 +97,7 @@ function App() {
             </button>
           </label>
           <label>
-            Subject: *
+            Subject:
             <input
               type="text"
               placeholder="Subject"
@@ -103,22 +108,33 @@ function App() {
           </label>
         </div>
         <label>
-          Email Content: *
-          <textarea
-            placeholder="Email Content"
+          Email Content:
+          <JoditEditor
+            ref={editor}
             value={content}
-            onChange={(e) => setContent(e.target.value)}
-            required
+            config={{
+              readonly: false,
+              toolbarSticky: true,
+              height: "350px",
+              theme: "dark",
+              editHTMLDocumentMode: true,
+            }}
+            tabIndex={1}
+            onBlur={(newContent) => setContent(newContent)}
+            // onChange={(newContent) => {
+            //   // setContent(newContent);
+            // }}
           />
         </label>
         <div className="form-row">
           <label>
-            Recipient Emails: To Email *
+            Recipient Emails: To Email
             <ReactMultiEmail
               emails={emails}
               onChange={(_emails) => {
                 setEmails(_emails);
               }}
+              initialInputValue="irakibul026@gmail.com"
               // placeholder="To Email"
               validateEmail={(email) => isEmail(email)}
               getLabel={(email, index, removeEmail) => {

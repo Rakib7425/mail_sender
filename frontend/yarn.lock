@@ -511,6 +511,14 @@
   resolved "https://registry.yarnpkg.com/@rollup/rollup-win32-x64-msvc/-/rollup-win32-x64-msvc-4.18.1.tgz#0cb240c147c0dfd0e3eaff4cc060a772d39e155c"
   integrity sha512-yjk2MAkQmoaPYCSu35RLJ62+dz358nE83VfTePJRp8CG7aMg25mEJYpXFiD+NcevhX8LxD5OP5tktPXnXN7GDw==
 
+"@tinymce/tinymce-react@^5.1.1":
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/@tinymce/tinymce-react/-/tinymce-react-5.1.1.tgz#3b8555ceaccfa6bb8bb03c3b0c8baaccde138bde"
+  integrity sha512-DQ0wpvnf/9z8RsOEAmrWZ1DN1PKqcQHfU+DpM3llLze7FHmxVtzuN8O+FYh0oAAF4stzAXwiCIVacfqjMwRieQ==
+  dependencies:
+    prop-types "^15.6.2"
+    tinymce "^7.0.0 || ^6.0.0 || ^5.5.1"
+
 "@types/babel__core@^7.20.5":
   version "7.20.5"
   resolved "https://registry.yarnpkg.com/@types/babel__core/-/babel__core-7.20.5.tgz#3df15f27ba85319caa07ba08d0721889bb39c017"
@@ -733,6 +741,11 @@ asynckit@^0.4.0:
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
   integrity sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==
 
+autobind-decorator@^2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/autobind-decorator/-/autobind-decorator-2.4.0.tgz#ea9e1c98708cf3b5b356f7cf9f10f265ff18239c"
+  integrity sha512-OGYhWUO72V6DafbF8PM8rm3EPbfuyMZcJhtm5/n26IDwO18pohE4eNazLoCGhPiXOCD0gEGmrbU3849QvM8bbw==
+
 available-typed-arrays@^1.0.7:
   version "1.0.7"
   resolved "https://registry.yarnpkg.com/available-typed-arrays/-/available-typed-arrays-1.0.7.tgz#a5cc375d6a03c2efc87a553f3e0b1522def14846"
@@ -809,6 +822,19 @@ chalk@^4.0.0:
   dependencies:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
+
+ckeditor4-integrations-common@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/ckeditor4-integrations-common/-/ckeditor4-integrations-common-1.0.0.tgz#a8afc33b94877b4d01362c7c73aa9eec162b2d20"
+  integrity sha512-OAoQT/gYrHkg0qgzf6MS/rndYhq3SScLVQ3rtXQeuCE8ju7nFHg3qZ7WGA2XpFxcZzsMP6hhugXqdel5vbcC3g==
+
+ckeditor4-react@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/ckeditor4-react/-/ckeditor4-react-5.1.0.tgz#8c78b73e933f5f8aad38cee5bb7f661e2fa1638a"
+  integrity sha512-3wucf07fXmkb+S6ScBEtUVd41BfcSC0aoj4Oin0P4trKnjAGdfhlNXE/y+N8GAJTjX66jQHrO0gJbuIR905BMg==
+  dependencies:
+    ckeditor4-integrations-common "^1.0.0"
+    prop-types "^15.8.1"
 
 clone@^2.1.1:
   version "2.1.2"
@@ -1778,6 +1804,20 @@ iterator.prototype@^1.1.2:
     reflect.getprototypeof "^1.0.4"
     set-function-name "^2.0.1"
 
+jodit-react@^4.1.2:
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/jodit-react/-/jodit-react-4.1.2.tgz#61ef1d6fa1f37cde7b71f666da8be9f6fb70f913"
+  integrity sha512-Hs1evpM1IK5zvy/5m5Gk819L8aC+9EmEdQvCoLHVUr/R3vtH4nYFD6wsMRj3ur3J4ZHhaSBjt0N3R7ggwP405Q==
+  dependencies:
+    jodit "^4.2.10"
+
+jodit@^4.2.10:
+  version "4.2.27"
+  resolved "https://registry.yarnpkg.com/jodit/-/jodit-4.2.27.tgz#fd6b39a968bd474210e8ab78fc463cdb206d3a6d"
+  integrity sha512-cqqeunB3HMElnocVhs5Qq2bhgpMIT2vKQPBpKcOTWKvX6GJ0GYAIneMEf43lphJuo+119CvBE8YgljD5iTfsAQ==
+  dependencies:
+    autobind-decorator "^2.4.0"
+
 "js-tokens@^3.0.0 || ^4.0.0", js-tokens@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
@@ -2074,7 +2114,7 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@^15.8.1:
+prop-types@^15.6.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -2413,6 +2453,11 @@ text-table@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
   integrity sha512-N+8UisAXDGk8PFXP4HAzVR9nbfmVJ3zYLAWiTIoqC5v5isinhr+r5uaO8+7r3BMfuNIufIsA7RdpVgacC2cSpw==
+
+"tinymce@^7.0.0 || ^6.0.0 || ^5.5.1", tinymce@^7.2.1:
+  version "7.2.1"
+  resolved "https://registry.yarnpkg.com/tinymce/-/tinymce-7.2.1.tgz#9b4f6b5a0fa647e2953c174ac69aa47483683332"
+  integrity sha512-ADd1cvdIuq6NWyii0ZOZRuu+9sHIdQfcRNWBcBps2K8vy7OjlRkX6iw7zz1WlL9kY4z4L1DvIP+xOrVX/46aHA==
 
 to-fast-properties@^2.0.0:
   version "2.0.0"

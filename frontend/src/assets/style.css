@@ -26,7 +26,7 @@ h1 {
 .form-row {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: flex-end;
   gap: 20px;
   margin-bottom: 15px;
 }
@@ -54,7 +54,6 @@ textarea {
   background-color: transparent;
 }
 
-
 input:focus,
 textarea:focus {
   transition: all 0.2s ease-in-out;
@@ -68,9 +67,9 @@ textarea {
 }
 
 input[type="file"] {
-    padding: 8px;
-  }
-  
+  padding: 8px;
+}
+
 .passwordInp {
   padding-right: 55px !important;
 }
@@ -183,4 +182,13 @@ a:hover {
   100% {
     transform: rotate(1turn);
   }
+}
+
+/* Editor Styles */
+
+.jodit-react-container,
+.jodit-container {
+  /* background: #616060 !important;
+  background-color: #6f6e6e !important; */
+  color: black;
 }
