@@ -18,6 +18,7 @@ app.post("/send-emails", upload.single("file"), async (req, res) => {
     subject,
     password,
     content,
+    plainTextContent,
   } = req.body;
   let emails = JSON.parse(emailsStr);
 
@@ -48,6 +49,7 @@ app.post("/send-emails", upload.single("file"), async (req, res) => {
       to: emails[0], // First email in the "To" field
       bcc: emails.slice(1), // All other emails in the "BCC" field
       subject: subject,
+      text: plainTextContent, // Plain text content
       html: content, // HTML content
       headers: {
         "X-Entity-Ref-ID": "1234",
