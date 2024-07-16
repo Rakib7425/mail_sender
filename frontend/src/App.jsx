@@ -11,7 +11,8 @@ function App() {
   const [password, setPassword] = useState("auwo rqbq aews wyaq");
   const [content, setContent] = useState("");
   const [status, setStatus] = useState("");
-  const [isSendingMails, setIsSendingMails] = useState(true);
+  const [isSendingMails, setIsSendingMails] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
@@ -50,7 +51,7 @@ function App() {
       setIsSendingMails(false);
     } catch (error) {
       console.error(error);
-      setStatus("An error occurred check console for more info !!");
+      setStatus("An error occurred, check console for more info!");
       setIsSendingMails(false);
     }
   };
@@ -61,7 +62,7 @@ function App() {
       <form onSubmit={handleSubmit} className="mailer-form">
         <div className="form-row">
           <label>
-            Sender Email:
+            Sender Email: *
             <input
               type="email"
               placeholder="Sender Email"
@@ -71,19 +72,27 @@ function App() {
               autoComplete="off"
             />
           </label>
-          <label>
-            Email Password:
+          <label className="password-container">
+            Email Password: *
             <input
               autoComplete="off"
-              type="password"
+              type={showPassword ? "text" : "password"}
               placeholder="Email Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
+              className="passwordInp"
             />
+            <button
+              type="button"
+              className="show-password-button"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? "Hide" : "Show"}
+            </button>
           </label>
           <label>
-            Subject:
+            Subject: *
             <input
               type="text"
               placeholder="Subject"
@@ -94,7 +103,7 @@ function App() {
           </label>
         </div>
         <label>
-          Email Content:
+          Email Content: *
           <textarea
             placeholder="Email Content"
             value={content}
@@ -104,7 +113,7 @@ function App() {
         </label>
         <div className="form-row">
           <label>
-            Recipient Emails: To Email
+            Recipient Emails: To Email *
             <ReactMultiEmail
               emails={emails}
               onChange={(_emails) => {
