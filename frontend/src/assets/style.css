@@ -95,8 +95,9 @@ input[type="file"] {
 
 .crossBtn {
   margin-left: 20px;
-  font-size: 17px;
+  font-size: 15px;
   color: red;
+  font-weight: bold;
   cursor: pointer;
 }
 
@@ -130,6 +131,11 @@ input[type="file"] {
 
 .send-button:hover {
   background-color: #0056b3;
+}
+
+.send-button:disabled {
+  background-color: #0056b3;
+  cursor: progress;
 }
 
 a {
@@ -192,8 +198,15 @@ a:hover {
   background-color: #000000 !important;
 }
 
-.jodit-toolbar-button__trigger, .jodit-toolbar-button__trigger svg{
+.jodit-toolbar__box,
+.jodit-,
+.jodit-wysiwyg {
+  background: #161a19 !important;
+}
+
+.jodit-toolbar-button__trigger,
+.jodit-toolbar-button__trigger svg {
   fill: #ffffff !important;
-  color: #ffffff !important; 
+  color: #ffffff !important;
   stroke: rgb(255, 255, 255) !important;
 }

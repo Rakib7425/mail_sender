@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import { ReactMultiEmail, isEmail } from "react-multi-email";
 import JoditEditor from "jodit-react";
@@ -8,11 +8,11 @@ const initialMailValue = `
 <p>Hi,<br><br><strong>I was going through your Website and personally, I see a lot of potential in your website and in your Business.</strong> <br><br><strong>With your permission, I would like to send you an audit report of your website with prices showing you a few things to greatly improve these search results for you.<br><br>These things are not difficult and my report will be very specific. It shows you exactly what needs to be done to move up the ranking dramatically. <br><br>We can rank your website on the 1st page of Google for your selected city or state.<br><br>May I send you a quote? If you are interested!<br></strong><br>Thank you</p><p><br></p>
 `;
 
-function App() {
+const App = () => {
   const [emails, setEmails] = useState([]);
   const [file, setFile] = useState(null);
   const [senderEmail, setSenderEmail] = useState("abcd625432@gmail.com");
-  const [subject, setSubject] = useState("Test Mail");
+  const [subject, setSubject] = useState("Best SEO");
   const [password, setPassword] = useState("auwo rqbq aews wyaq");
   const [content, setContent] = useState(initialMailValue);
   const [status, setStatus] = useState("");
@@ -20,6 +20,30 @@ function App() {
   const [showPassword, setShowPassword] = useState(false);
 
   const editor = useRef(null);
+
+  useEffect(() => {
+    const savedState = JSON.parse(localStorage.getItem("mailerState"));
+    if (savedState) {
+      setEmails(savedState.emails || []);
+      setSenderEmail(savedState.senderEmail || "abcd625432@gmail.com");
+      setSubject(savedState.subject || "Best SEO");
+      setPassword(savedState.password || "auwo rqbq aews wyaq");
+      setContent(savedState.content || initialMailValue);
+      setFile(savedState.file || null);
+    }
+  }, []);
+
+  useEffect(() => {
+    const state = {
+      emails,
+      senderEmail,
+      subject,
+      password,
+      content,
+      file,
+    };
+    localStorage.setItem("mailerState", JSON.stringify(state));
+  }, [emails, senderEmail, subject, password, content, file]);
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
@@ -58,6 +82,7 @@ function App() {
         }
       );
       setStatus(response.data);
+
       setIsSendingMails(false);
     } catch (error) {
       console.error(error);
@@ -72,7 +97,7 @@ function App() {
       <form onSubmit={handleSubmit} className="mailer-form">
         <div className="form-row">
           <label>
-            Sender Email:
+            Sender Email: *
             <input
               type="email"
               placeholder="Sender Email"
@@ -83,7 +108,7 @@ function App() {
             />
           </label>
           <label className="password-container">
-            Email Password:
+            Email Password: *
             <input
               autoComplete="off"
               type={showPassword ? "text" : "password"}
@@ -101,7 +126,7 @@ function App() {
             </button>
           </label>
           <label>
-            Subject:
+            Subject: *
             <input
               type="text"
               placeholder="Subject"
@@ -112,7 +137,7 @@ function App() {
           </label>
         </div>
         <label>
-          Email Content:
+          Email Content: *
           <JoditEditor
             ref={editor}
             value={content}
@@ -127,21 +152,17 @@ function App() {
             }}
             tabIndex={1}
             onBlur={(newContent) => setContent(newContent)}
-            // onChange={(newContent) => {
-            //   // setContent(newContent);
-            // }}
           />
         </label>
         <div className="form-row">
           <label>
-            Recipient Emails: To Email
+            Recipient Emails: To Email *
             <ReactMultiEmail
               emails={emails}
               onChange={(_emails) => {
                 setEmails(_emails);
               }}
-              initialInputValue="irakibul026@gmail.com"
-              // placeholder="To Email"
+              initialInputValue="leonesunny7425@gmail.com"
               validateEmail={(email) => isEmail(email)}
               getLabel={(email, index, removeEmail) => {
                 return (
@@ -169,7 +190,11 @@ function App() {
           </label>
         </div>
         <div className="form-row">
-          <button type="submit" className="send-button">
+          <button
+            type="submit"
+            disabled={isSendingMails}
+            className="send-button"
+          >
             {isSendingMails && <span className="loader"></span>} Send Emails
           </button>
         </div>
@@ -180,6 +205,6 @@ function App() {
       </a>
     </div>
   );
-}
+};
 
 export default App;
