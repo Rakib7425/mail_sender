@@ -2,6 +2,7 @@ const express = require("express");
 const multer = require("multer");
 const XLSX = require("xlsx");
 const nodemailer = require("nodemailer");
+const { htmlToText } = require("html-to-text");
 const cors = require("cors");
 const fs = require("fs");
 const app = express();
@@ -18,7 +19,6 @@ app.post("/send-emails", upload.single("file"), async (req, res) => {
     subject,
     password,
     content,
-    plainTextContent,
   } = req.body;
   let emails = JSON.parse(emailsStr);
 
@@ -43,6 +43,9 @@ app.post("/send-emails", upload.single("file"), async (req, res) => {
         pass: password,
       },
     });
+
+    // Convert HTML content to plain text
+    const plainTextContent = htmlToText(content);
 
     const mailOptions = {
       from: senderEmail,

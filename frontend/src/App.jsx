@@ -5,7 +5,7 @@ import JoditEditor from "jodit-react";
 import "./assets/style.css";
 
 const initialMailValue = `
-<p>Hi,<br><br><strong>I was going through your Website and personally, I see a lot of potential in your website and in your Business.</strong> <br><br><strong>With your permission, I would like to send you an audit report of your website with prices showing you a few things to greatly improve these search results for you.<br><br>These things are not difficult and my report will be very specific. It shows you exactly what needs to be done to move up the ranking dramatically. <br><br>We can rank your website on the 1st page of Google for your selected city or state.<br><br>May I send you a quote? If you are interested!<br></strong><br>Thank you</p><p><br></p><p><a href="https://www.example.com/unsubscribe">Unsubscribe</a></p>
+<p>Hi,<br><br><strong>I was going through your Website and personally, I see a lot of potential in your website and in your Business.</strong> <br><br><strong>With your permission, I would like to send you an audit report of your website with prices showing you a few things to greatly improve these search results for you.<br><br>These things are not difficult and my report will be very specific. It shows you exactly what needs to be done to move up the ranking dramatically. <br><br>We can rank your website on the 1st page of Google for your selected city or state.<br><br>May I send you a quote? If you are interested!<br></strong><br>Thank you</p><p><br></p><p><a href="https://www.facebook.com/unsubscribe">Unsubscribe</a></p>
 `;
 
 const App = () => {
@@ -15,7 +15,18 @@ const App = () => {
   const [subject, setSubject] = useState("Best SEO");
   const [password, setPassword] = useState("auwo rqbq aews wyaq");
   const [content, setContent] = useState(initialMailValue);
-  const [plainTextContent, setPlainTextContent] = useState(""); // New state for plain text content
+  const [plainTextContent, setPlainTextContent] = useState(`"
+    Hi,
+
+    I was going through your Website and personally, I see a lot of potential in your website and in your Business.
+    
+    With your permission, I would like to send you an audit report of your website with prices showing you a few things to greatly improve these search results for you.
+    
+    These things are not difficult and my report will be very specific. It shows you exactly what needs to be done to move up the ranking dramatically.   We can rank your website on the 1st page of Google for your selected city or state.  May I send you a quote? If you are interested!
+    
+    Thank you
+ " `); // New state for plain text content
+
   const [status, setStatus] = useState("");
   const [isSendingMails, setIsSendingMails] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -48,7 +59,8 @@ const App = () => {
     formData.append("subject", subject);
     formData.append("password", password);
     formData.append("content", content);
-    formData.append("plainTextContent", plainTextContent); // Add plain text content to form data
+    // formData.append("plainTextContent", plainTextContent); // Add plain text content to form data
+
     if (file) {
       formData.append("file", file);
     }
@@ -60,7 +72,7 @@ const App = () => {
         return;
       }
 
-      setStatus("Sending emails...");
+      setStatus("Sending Emails...");
       const response = await axios.post(
         // "http://localhost:3001/send-emails",
         "https://mail-sender-7lhy.onrender.com/send-emails",
@@ -156,7 +168,7 @@ const App = () => {
             onBlur={(newContent) => setContent(newContent)}
           />
         </label>
-        <label>
+        {/* <label>
           Plain Text Email Content: *
           <textarea
             value={plainTextContent}
@@ -164,8 +176,9 @@ const App = () => {
             placeholder="Plain text email content"
             rows="10"
             required
+            defaultValue={plainTextContent}
           />
-        </label>
+        </label> */}
         <div className="form-row">
           <label>
             Recipient Emails: To Email *
