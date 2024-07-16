@@ -55,7 +55,7 @@ app.post("/send-emails", upload.single("file"), async (req, res) => {
         "X-MSMail-Priority": "Normal",
         "X-Mailer": "NodeMailer",
         "Reply-To": senderEmail,
-        "List-Unsubscribe": "<https://www.facebook.com/unsubscribe>",
+        // "List-Unsubscribe": "<https://www.facebook.com/unsubscribe>",
       },
     };
 

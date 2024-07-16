@@ -183,3 +183,17 @@ a:hover {
     transform: rotate(1turn);
   }
 }
+
+/* Editor Styles */
+
+.jodit-toolbar-button__button {
+  color: #ce0707 !important;
+  fill: #000000 !important;
+  background-color: #000000 !important;
+}
+
+.jodit-toolbar-button__trigger, .jodit-toolbar-button__trigger svg{
+  fill: #ffffff !important;
+  color: #ffffff !important; 
+  stroke: rgb(255, 255, 255) !important;
+}

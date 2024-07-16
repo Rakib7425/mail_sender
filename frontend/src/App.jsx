@@ -4,13 +4,17 @@ import { ReactMultiEmail, isEmail } from "react-multi-email";
 import JoditEditor from "jodit-react";
 import "./assets/style.css";
 
+const initialMailValue = `
+<p>Hi,<br><br><strong>I was going through your Website and personally, I see a lot of potential in your website and in your Business.</strong> <br><br><strong>With your permission, I would like to send you an audit report of your website with prices showing you a few things to greatly improve these search results for you.<br><br>These things are not difficult and my report will be very specific. It shows you exactly what needs to be done to move up the ranking dramatically. <br><br>We can rank your website on the 1st page of Google for your selected city or state.<br><br>May I send you a quote? If you are interested!<br></strong><br>Thank you</p><p><br></p>
+`;
+
 function App() {
   const [emails, setEmails] = useState([]);
   const [file, setFile] = useState(null);
   const [senderEmail, setSenderEmail] = useState("abcd625432@gmail.com");
   const [subject, setSubject] = useState("Test Mail");
   const [password, setPassword] = useState("auwo rqbq aews wyaq");
-  const [content, setContent] = useState("");
+  const [content, setContent] = useState(initialMailValue);
   const [status, setStatus] = useState("");
   const [isSendingMails, setIsSendingMails] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -118,6 +122,7 @@ function App() {
               height: "350px",
               theme: "dark",
               editHTMLDocumentMode: true,
+
               defaultActionOnPaste: "insert_as_html",
             }}
             tabIndex={1}
