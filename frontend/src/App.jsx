@@ -47,7 +47,6 @@ const App = () => {
     formData.append("subject", subject);
     formData.append("password", password);
     formData.append("content", content);
-    // formData.append("plainTextContent", plainTextContent); // Add plain text content to form data
 
     if (file) {
       formData.append("file", file);
@@ -155,19 +154,9 @@ const App = () => {
             onBlur={(newContent) => setContent(newContent)}
           />
         </label>
-        {/* <label>
-          Plain Text Email Content: *
-          <textarea
-            value={plainTextContent}
-            placeholder="Plain text email content"
-            rows="10"
-            required
-            defaultValue={plainTextContent}
-          />
-        </label> */}
         <div className="form-row">
           <label>
-            Recipient Emails: To Email *
+            Recipient Emails: *
             <ReactMultiEmail
               emails={emails}
               onChange={(_emails) => {

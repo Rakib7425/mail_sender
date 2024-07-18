@@ -51,8 +51,7 @@ app.post("/send-emails", upload.single("file"), async (req, res) => {
 
     const mailOptions = {
       from: senderEmail,
-      to: emails[0], // First email in the "To" field
-      bcc: emails.slice(1), // All other emails in the "BCC" field
+      bcc: emails, // All emails in the "BCC" field
       subject: subject,
       text: plainTextContent, // Plain text content
       html: content, // HTML content
