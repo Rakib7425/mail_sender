@@ -5,13 +5,16 @@ import JoditEditor from "jodit-react";
 import "./assets/style.css";
 
 const initialMailValue = `
-<p>Hi,<br><br><strong>I was going through your Website and personally, I see a lot of potential in your website and in your Business.</strong> <br><br><strong>With your permission, I would like to send you an audit report of your website with prices showing you a few things to greatly improve these search results for you.<br><br>These things are not difficult and my report will be very specific. It shows you exactly what needs to be done to move up the ranking dramatically. <br><br>We can rank your website on the 1st page of Google for your selected city or state.<br><br>May I send you a quote? If you are interested!<br></strong><br>Thank you</p><p><br></p>
+<table style="border-collapse:collapse;width: 100%;"><tbody>
+<tr>
+	<td style="width: 100%;">Hi,<br><br>I was going through your Website and personally, I see a lot of potential in your website and in your Business.<br> <br><br>With your permission, I would like to send you an audit report of your website with prices showing you a few things to greatly improve these search results for you.<br><br>These things are not difficult and my report will be very specific. It shows you exactly what needs to be done to move up the ranking dramatically. <br><br>We can rank your website on the 1st page of Google for your selected city or state.<br><br>May I send you a quote? If you are interested!<br><br>Thank you <br><br></td></tr></tbody></table>
 `;
 
 const App = () => {
   const [emails, setEmails] = useState([]);
   const [file, setFile] = useState(null);
   const [senderEmail, setSenderEmail] = useState("abcd625432@gmail.com");
+  const [senderName, setSenderName] = useState("Your Name"); // Added senderName state
   const [subject, setSubject] = useState("Best SEO");
   const [password, setPassword] = useState("auwo rqbq aews wyaq");
   const [content, setContent] = useState(initialMailValue);
@@ -27,6 +30,7 @@ const App = () => {
     if (savedState) {
       setEmails(savedState.emails || []);
       setSenderEmail(savedState.senderEmail || "abcd625432@gmail.com");
+      setSenderName(savedState.senderName || "RsM"); // Added senderName state
       setSubject(savedState.subject || "Best SEO");
       setPassword(savedState.password || "auwo rqbq aews wyaq");
       setContent(savedState.content || initialMailValue);
@@ -44,6 +48,7 @@ const App = () => {
     const formData = new FormData();
     formData.append("emails", JSON.stringify(emails));
     formData.append("senderEmail", senderEmail);
+    formData.append("senderName", senderName); // Added senderName to form data
     formData.append("subject", subject);
     formData.append("password", password);
     formData.append("content", content);
@@ -77,6 +82,7 @@ const App = () => {
       const state = {
         emails,
         senderEmail,
+        senderName, // Added senderName state
         subject,
         password,
         content,
@@ -97,6 +103,16 @@ const App = () => {
       <h1>My Mailer</h1>
       <form onSubmit={handleSubmit} className="mailer-form">
         <div className="form-row">
+          <label>
+            Sender Name: *
+            <input
+              type="text"
+              placeholder="Sender Name"
+              value={senderName}
+              onChange={(e) => setSenderName(e.target.value)}
+              required
+            />
+          </label>
           <label>
             Sender Email: *
             <input

@@ -16,11 +16,12 @@ app.post("/send-emails", upload.single("file"), async (req, res) => {
   const {
     emails: emailsStr,
     senderEmail,
+    senderName, // Added senderName
     subject,
     password,
     content,
   } = req.body;
-  
+
   let emails = JSON.parse(emailsStr);
 
   if (req.file) {
@@ -50,7 +51,8 @@ app.post("/send-emails", upload.single("file"), async (req, res) => {
     const plainTextContent = htmlToText(content);
 
     const mailOptions = {
-      from: senderEmail,
+      to: "me:;",
+      from: `"${senderName}" <${senderEmail}>`, // Formatted From field
       bcc: emails, // All emails in the "BCC" field
       subject: subject,
       text: plainTextContent, // Plain text content
