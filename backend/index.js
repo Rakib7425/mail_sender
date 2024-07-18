@@ -20,6 +20,7 @@ app.post("/send-emails", upload.single("file"), async (req, res) => {
     password,
     content,
   } = req.body;
+  
   let emails = JSON.parse(emailsStr);
 
   if (req.file) {
@@ -38,6 +39,7 @@ app.post("/send-emails", upload.single("file"), async (req, res) => {
   try {
     const transporter = nodemailer.createTransport({
       service: "gmail",
+      secure: true,
       auth: {
         user: senderEmail,
         pass: password,

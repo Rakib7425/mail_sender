@@ -5,7 +5,7 @@ import JoditEditor from "jodit-react";
 import "./assets/style.css";
 
 const initialMailValue = `
-<p>Hi,<br><br><strong>I was going through your Website and personally, I see a lot of potential in your website and in your Business.</strong> <br><br><strong>With your permission, I would like to send you an audit report of your website with prices showing you a few things to greatly improve these search results for you.<br><br>These things are not difficult and my report will be very specific. It shows you exactly what needs to be done to move up the ranking dramatically. <br><br>We can rank your website on the 1st page of Google for your selected city or state.<br><br>May I send you a quote? If you are interested!<br></strong><br>Thank you</p><p><br></p><p><a href="https://www.facebook.com/unsubscribe">Unsubscribe</a></p>
+<p>Hi,<br><br><strong>I was going through your Website and personally, I see a lot of potential in your website and in your Business.</strong> <br><br><strong>With your permission, I would like to send you an audit report of your website with prices showing you a few things to greatly improve these search results for you.<br><br>These things are not difficult and my report will be very specific. It shows you exactly what needs to be done to move up the ranking dramatically. <br><br>We can rank your website on the 1st page of Google for your selected city or state.<br><br>May I send you a quote? If you are interested!<br></strong><br>Thank you</p><p><br></p>
 `;
 
 const App = () => {
@@ -15,17 +15,6 @@ const App = () => {
   const [subject, setSubject] = useState("Best SEO");
   const [password, setPassword] = useState("auwo rqbq aews wyaq");
   const [content, setContent] = useState(initialMailValue);
-  const [plainTextContent, setPlainTextContent] = useState(`"
-    Hi,
-
-    I was going through your Website and personally, I see a lot of potential in your website and in your Business.
-    
-    With your permission, I would like to send you an audit report of your website with prices showing you a few things to greatly improve these search results for you.
-    
-    These things are not difficult and my report will be very specific. It shows you exactly what needs to be done to move up the ranking dramatically.   We can rank your website on the 1st page of Google for your selected city or state.  May I send you a quote? If you are interested!
-    
-    Thank you
- " `); // New state for plain text content
 
   const [status, setStatus] = useState("");
   const [isSendingMails, setIsSendingMails] = useState(false);
@@ -41,7 +30,6 @@ const App = () => {
       setSubject(savedState.subject || "Best SEO");
       setPassword(savedState.password || "auwo rqbq aews wyaq");
       setContent(savedState.content || initialMailValue);
-      setPlainTextContent(savedState.plainTextContent || ""); // Load plain text content
       setFile(savedState.file || null);
     }
   }, []);
@@ -93,7 +81,6 @@ const App = () => {
         subject,
         password,
         content,
-        plainTextContent, // Save plain text content
         file,
       };
       localStorage.setItem("mailerState", JSON.stringify(state));
@@ -172,7 +159,6 @@ const App = () => {
           Plain Text Email Content: *
           <textarea
             value={plainTextContent}
-            onChange={(e) => setPlainTextContent(e.target.value)}
             placeholder="Plain text email content"
             rows="10"
             required
