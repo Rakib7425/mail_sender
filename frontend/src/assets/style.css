@@ -70,8 +70,8 @@ input[type="file"] {
   padding: 8px;
 }
 
-.passwordInp {
-  padding-right: 55px !important;
+.password-input {
+  padding-right: 30px !important;
 }
 
 .password-container {
@@ -80,10 +80,10 @@ input[type="file"] {
 
 .show-password-button {
   position: absolute;
-  top: 70%;
+  top: 74.5%;
   right: 10px;
   transform: translateY(-50%);
-  background: #a8a7a7;
+  background: none;
   border: none;
   cursor: pointer;
   color: #000000;
