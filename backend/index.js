@@ -55,8 +55,8 @@ app.post("/send-emails", upload.single("file"), async (req, res) => {
 
       const mailOptions = {
         from: `"${senderName}" <${senderEmail}>`,
-        to: senderEmail, // You can use your own email here or any default email
-        bcc: batch,
+        to: emails.length === 1 ? emails[0] : "", // Use senderEmail if sending to multiple recipients
+        bcc: emails.length > 1 ? batch : undefined, // Use BCC only for multiple recipients
         subject: subject,
         text: plainTextContent,
         html: content,

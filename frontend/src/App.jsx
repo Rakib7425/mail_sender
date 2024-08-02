@@ -9,16 +9,15 @@ import { IoIosEyeOff } from "react-icons/io";
 const initialMailValue = `
   <p>
   Hi,</p><br><p>I was going through your Website and personally, I see a lot of potential in your website and in your Business.</p> <br><p>With your permission, I would like to send you an audit report of your website with prices showing you a few things to greatly improve these search results for you.</p><br><p>These things are not difficult and my report will be very specific. It shows you exactly what needs to be done to move up the ranking dramatically. </p><br><p>We can rank your website on the 1st page of Google for your selected city or state.</p><br><p>May I send you a quote? If you are interested!</p><br><p>Thank you </p><br><br>
- 
  `;
 
 const App = () => {
   const [emails, setEmails] = useState([]);
   const [file, setFile] = useState(null);
-  const [senderEmail, setSenderEmail] = useState(""); //abcd625432@gmail.com
+  const [senderEmail, setSenderEmail] = useState("abcd625432@gmail.com"); //abcd625432@gmail.com
   const [senderName, setSenderName] = useState("");
   const [subject, setSubject] = useState(""); // Best SEO
-  const [password, setPassword] = useState(""); //auwo rqbq aews wyaq
+  const [password, setPassword] = useState("auwo rqbq aews wyaq"); // auwo rqbq aews wyaq
   const [content, setContent] = useState(initialMailValue);
   const [status, setStatus] = useState("");
   const [isSendingMails, setIsSendingMails] = useState(false);
@@ -67,7 +66,8 @@ const App = () => {
 
       setStatus("Sending Emails...");
       const response = await axios.post(
-        "https://mail-sender-7lhy.onrender.com/send-emails",
+        // "https://mail-sender-7lhy.onrender.com/send-emails",
+        "http://localhost:5173/3001/send-emails",
         formData,
         {
           headers: {
